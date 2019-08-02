@@ -8,6 +8,9 @@
 //   reverseInt(-15) === -51
 //   reverseInt(-90) === -9
 
-function reverseInt(n) {}
+function reverseInt (n) {
+  return +[...n.toString().replace('-', '')].reverse().join('') * Math.sign(n)
+}
 
-module.exports = reverseInt;
+module.exports = reverseInt
+
