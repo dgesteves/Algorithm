@@ -8,6 +8,45 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function anagrams(stringA, stringB) {}
+function cleanStr (str) {
+  return [...str.replace(/[^\w]/g, '').toLowerCase()].sort().join('')
+}
 
-module.exports = anagrams;
+function anagrams (stringA, stringB) {
+  return cleanStr(stringA) === cleanStr(stringB)
+}
+
+module.exports = anagrams
+
+// Replace all characters that are not letters from the string
+/**
+ * /[^\w]/g
+ * */
+
+// 1st way of solving it
+/**
+ * function mapStrToObject (str) {
+  let charMap = {}
+
+  for (let char of str.replace(/[^\w]/g, '').toLowerCase()) {
+    charMap[ char ] = charMap[ char ] + 1 || 1
+  }
+  return charMap
+}
+
+ function anagrams (stringA, stringB) {
+  const mapA = mapStrToObject(stringA)
+  const mapB = mapStrToObject(stringB)
+
+  if (Object.keys(mapA).length !== Object.keys(mapB).length) {
+    return false
+  }
+
+  for (let char in mapA) {
+    if (mapA[ char ] !== mapB[ char ]) {
+      return false
+    }
+  }
+  return true
+}
+ * */
